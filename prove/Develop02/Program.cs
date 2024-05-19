@@ -1,14 +1,23 @@
 using System;
 using System.IO;
-
 class Program
 {
+    public static Date today;
     static int read_int(){
-    return int.Parse(Console.ReadLine());
+        try{
+            return int.Parse(Console.ReadLine());
+        }
+        catch(FormatException){
+            Console.WriteLine("Please enter a number");
+            return read_int();
+        }
+
     }
     static void Main(string[] args)
     {   
         WelcomeMessage();
+        Console.WriteLine($"What is todays date?");
+        today = prompt_user_date();
         while(true){
             user_menu();
         }
@@ -24,10 +33,25 @@ class Program
         Journal.save_journal(name);
     }
     static void prompt_load_journal(){
+         bool merge = false;
         Console.WriteLine($"What is the name of your journal?");
         Console.Write($">");
         string name = Console.ReadLine();
-        Journal.load_journal(name);
+        if (Journal.entries.Count > 0){
+            Console.WriteLine($"Would you like to save exiting entries into the existing journal?\n(loading a jounral without saving will erase your entries)");
+            Console.WriteLine("1. Yes");
+            Console.WriteLine("2. No");
+            Console.Write($">");
+            switch(read_int()){
+                case 1:
+                    merge = true;
+                    break;
+                case 2:
+                    merge = false;
+                    break;
+            }
+        }
+        Journal.load_journal(name, merge);
     }
     static void user_menu(){
         Console.WriteLine($"");
@@ -37,7 +61,9 @@ class Program
         Console.WriteLine("3. Add Entry");
         Console.WriteLine("4. Remove Entry");
         Console.WriteLine("5. Display Entries");
-        Console.WriteLine("6. Quit"); Console.Write(">");
+        Console.WriteLine("6. Get a Prompt");
+        Console.WriteLine($"7. Change Date");
+        Console.WriteLine("8. Quit"); Console.Write(">");
         switch (read_int()){
             case 1:
                 prompt_save_journal();
@@ -55,13 +81,24 @@ class Program
                 prompt_user_entry();
                 break;
             case 4://remove entry
-                Console.WriteLine($"What date would you like to remove? (M/D/Y):");
-                Journal.Remove(Console.ReadLine());
+                Console.WriteLine($"What date would you like to remove, leave blank for today? (M/D/Y):");
+                string input = Console.ReadLine();
+                if(input == "") Journal.Remove(today);
+                
+                Journal.Remove(input);
                 break;
             case 5:
                 Journal.Display();
                 break;
-            case 6://quit
+            case 6://get a prompt
+                Journal.give_me_a_prompt();
+                prompt_user_entry();
+                break;
+            case 7:
+                Console.WriteLine($"What date would you like to change to?");
+                today = prompt_user_date();
+                break;
+            case 8://quit
                 Environment.Exit(0);
                 break;
             default:
@@ -70,16 +107,19 @@ class Program
         }
     }
     static void prompt_user_entry(){
-        Console.WriteLine($"What is todays date?");
-        Console.Write($"Year: ");
-        int year = int.Parse(Console.ReadLine());
-        Console.Write($"Month: ");
-        int month = int.Parse(Console.ReadLine());
-        Console.Write($"Day: ");
-        int day = int.Parse(Console.ReadLine());
+        
         Console.WriteLine($"Make an entry for your journal:");
-        Entry entry = new Entry(new Date(year,  month, day), Console.ReadLine());
+        Entry entry = new Entry(today, Console.ReadLine());
         Journal.add(entry);
         Journal.Display();
+    }
+    static Date prompt_user_date(){
+        Console.Write($"Year: ");
+        int year = read_int();
+        Console.Write($"Month: ");
+        int month = read_int();
+        Console.Write($"Day: ");
+        int day = read_int();
+        return new Date(year, month, day);
     }
 }
