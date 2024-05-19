@@ -21,9 +21,4 @@ class Entry
         this.date.print();
         Console.WriteLine(this.paragraph);
     }
-    public static string give_me_a_prompt(){
-        string prompt = "Did anything unexpected happen today?";
-        Console.WriteLine($"{prompt}");
-        return prompt;
-    }
 }
