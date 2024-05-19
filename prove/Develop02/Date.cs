@@ -2,13 +2,13 @@ using System;
 
 class Date
 {
-    private int year;
-    private int month;
-    private int day;
-    public Date(int year, int month, int day){
-        this.year = year;
-        this.month = month;
-        this.day = day;
+    private int _year;
+    private int _month;
+    private int _day;
+    public Date(int _year, int _month, int _day){
+        this._year = _year;
+        this._month = _month;
+        this._day = _day;
     }
     public static Date stringToDate(string date){
         //unfinished
@@ -38,22 +38,22 @@ class Date
         return new Date(2024, 5, 20);
     }
     public int getYear(){
-        return year;
+        return _year;
     }
     public int getMonth(){
-        return month;
+        return _month;
     }
     public int getDay(){
-        return day;
+        return _day;
     }
     public string toString(){
-        return $"{month}/{day}/{year}";
+        return $"{_month}/{_day}/{_year}";
     }
     public void print(){
         Console.WriteLine(toString());
     }
     public bool equals(Date date_comp){
-        if(date_comp.getYear() == year && date_comp.getMonth() == month && date_comp.getDay() == day) return true;
+        if(date_comp.getYear() == _year && date_comp.getMonth() == _month && date_comp.getDay() == _day) return true;
         return false;
     }
 }

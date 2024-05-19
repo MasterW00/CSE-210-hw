@@ -3,46 +3,44 @@ using System.IO;
 class Program
 {
     public static Date today;
-    static int read_int(){
+    static int readInt(){
         try{
             return int.Parse(Console.ReadLine());
         }
         catch(FormatException){
             Console.WriteLine("Please enter a number");
-            return read_int();
+            return readInt();
         }
-
     }
     static void Main(string[] args)
     {   
         WelcomeMessage();
         Console.WriteLine($"What is todays date?");
-        today = prompt_user_date();
+        today = promptUserDate();
         while(true){
-            user_menu();
+            userMenu();
         }
     }
-
     static void WelcomeMessage(){
         Console.WriteLine("Welcome to your journal");
     }
-    static void prompt_save_journal(){
+    static void promptSaveJournal(){
         Console.WriteLine($"What is the name of this journal?");
         Console.Write($">");
         string name = Console.ReadLine();
-        Journal.save_journal(name);
+        Journal.saveJournal(name);
     }
-    static void prompt_load_journal(){
+    static void promptLoadJournal(){
          bool merge = false;
         Console.WriteLine($"What is the name of your journal?");
         Console.Write($">");
         string name = Console.ReadLine();
-        if (Journal.entries.Count > 0){
+        if (Journal._entries.Count > 0){
             Console.WriteLine($"Would you like to save exiting entries into the existing journal?\n(loading a jounral without saving will erase your entries)");
             Console.WriteLine("1. Yes");
             Console.WriteLine("2. No");
             Console.Write($">");
-            switch(read_int()){
+            switch(readInt()){
                 case 1:
                     merge = true;
                     break;
@@ -51,9 +49,9 @@ class Program
                     break;
             }
         }
-        Journal.load_journal(name, merge);
+        Journal.loadJournal(name, merge);
     }
-    static void user_menu(){
+    static void userMenu(){
         Console.WriteLine($"");
         Console.WriteLine("What would you like to do?");
         Console.WriteLine("1. Save Journal");
@@ -64,13 +62,13 @@ class Program
         Console.WriteLine("6. Get a Prompt");
         Console.WriteLine($"7. Change Date");
         Console.WriteLine("8. Quit"); Console.Write(">");
-        switch (read_int()){
+        switch (readInt()){
             case 1:
-                prompt_save_journal();
+                promptSaveJournal();
                 break;
             case 2:
                 try{
-                    prompt_load_journal();
+                    promptLoadJournal();
                     Console.WriteLine($"Journal Loaded!");
                 }
                 catch(FileNotFoundException){
@@ -78,25 +76,24 @@ class Program
                 }
                 break;
             case 3:
-                prompt_user_entry();
+                promptUserEntry();
                 break;
             case 4://remove entry
                 Console.WriteLine($"What date would you like to remove, leave blank for today? (M/D/Y):");
                 string input = Console.ReadLine();
-                if(input == "") Journal.Remove(today);
-                
-                Journal.Remove(input);
+                if(input == "") Journal.remove(today);
+                Journal.remove(input);
                 break;
             case 5:
-                Journal.Display();
+                Journal.display();
                 break;
             case 6://get a prompt
-                Journal.give_me_a_prompt();
-                prompt_user_entry();
+                Journal.giveMePrompt();
+                promptUserEntry();
                 break;
             case 7:
                 Console.WriteLine($"What date would you like to change to?");
-                today = prompt_user_date();
+                today = promptUserDate();
                 break;
             case 8://quit
                 Environment.Exit(0);
@@ -106,20 +103,19 @@ class Program
                 break;
         }
     }
-    static void prompt_user_entry(){
-        
+    static void promptUserEntry(){
         Console.WriteLine($"Make an entry for your journal:");
         Entry entry = new Entry(today, Console.ReadLine());
         Journal.add(entry);
-        Journal.Display();
+        Journal.display();
     }
-    static Date prompt_user_date(){
+    static Date promptUserDate(){
         Console.Write($"Year: ");
-        int year = read_int();
+        int year = readInt();
         Console.Write($"Month: ");
-        int month = read_int();
+        int month = readInt();
         Console.Write($"Day: ");
-        int day = read_int();
+        int day = readInt();
         return new Date(year, month, day);
     }
 }

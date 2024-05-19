@@ -2,23 +2,23 @@ using System;
 
 class Entry
 {
-    private Date date;
-    private string paragraph;
+    private Date _date;
+    private string _paragraph;
     public Entry(Date date, string paragraph){
-        this.date = date;
-        this.paragraph = paragraph;
+        _date = date;
+        _paragraph = paragraph;
     }
-    public void edit_paragraph(string newparagraph){
-        this.paragraph = newparagraph;
+    public void editParagraph(string newparagraph){
+        _paragraph = newparagraph;
     }
-    public string get_paragraph(){
-        return this.paragraph;
+    public string getParagraph(){
+        return _paragraph;
     }
-    public Date get_date(){
-        return this.date;
+    public Date getDate(){
+        return _date;
     }
     public void print(){
-        this.date.print();
-        Console.WriteLine(this.paragraph);
+        this._date.print();
+        Console.WriteLine(_paragraph);
     }
 }
