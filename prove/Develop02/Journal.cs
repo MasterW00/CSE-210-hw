@@ -10,15 +10,18 @@ class Journal
     }
     public static void remove(string date){
         Date comp = Date.stringToDate(date);
-        remove(date);
+        remove(comp);
     }
     public static void remove(Date date){
+        _entries.Remove(get_entry(date));
+    }
+    public static Entry get_entry(Date date){
         foreach (Entry entry in _entries){
             if (entry.getDate().equals(date)){
-                _entries.Remove(entry);
-                break;
+                return entry;
             }
         }
+        return null;
     }
     public static void display(){
         foreach(Entry entry in _entries){
@@ -46,7 +49,7 @@ class Journal
     public static void saveJournal(string file){
         using (StreamWriter writer = new StreamWriter($"{_path}{file}")){
             foreach(Entry entry in _entries){
-                writer.WriteLine(entry.getDate().toString());
+                writer.WriteLine($"{entry.getDate()}");
                 int char_max = 50;
                 int char_count = 0;
                 foreach(char x in entry.getParagraph()){
