@@ -27,8 +27,7 @@ class Program
     static void promptSaveJournal(){
         Console.WriteLine($"What is the name of this journal?");
         Console.Write($">");
-        string name = Console.ReadLine();
-        Journal.saveJournal(name);
+        Journal.saveJournal(Console.ReadLine());
     }
     static void promptLoadJournal(){
          bool merge = false;
