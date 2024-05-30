@@ -26,7 +26,7 @@ public class Standard_Works
                 verse.setChapterLine(num);
                 return read;
             }
-        }
+        }   
     }
     public static StreamReader findVerse(Scripture verse){
         if(verse.getText() != null) return null;
@@ -34,7 +34,17 @@ public class Standard_Works
         int x = 0;
         string line = null;
         while(x < verse.getVerse()){
-            line = read.ReadLine();
+            try {line = read.ReadLine();}
+            catch (NullReferenceException){
+                Console.WriteLine($"Scripture is not part of the standard works.\nFor now type what it says below");
+                verse.setText(Console.ReadLine());
+                return null;
+            }
+            if(line.Contains('%') || line.Contains('$')){
+                Console.WriteLine($"Scripture is not part of the standard works.\nFor now type what it says below");
+                verse.setText(Console.ReadLine());
+                return null;
+            }
             x++;
         }
         verse.setVerseLine(x);
