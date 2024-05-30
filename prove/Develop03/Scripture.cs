@@ -1,4 +1,4 @@
-public class Scripture{
+public class Scripture:Standard_Works{
     private string work;
     private string book;
     private int chapter;
@@ -92,21 +92,5 @@ public class Scripture{
         Console.Clear();
         Console.WriteLine($"{getReference()}");
         Console.WriteLine($"{getText()}\n");
-    }
-    public bool hideWords(int number = 5){
-        string[] scrp = text.Split(' ');
-        Random random = new Random();
-        int rand;
-        for(int i = 0; i < number; i++){
-            rand = random.Next(0, scrp.Length - 1);
-            if(scrp[rand].Contains('_')) rand = random.Next(0, scrp.Length - 1);
-            scrp[rand] = new string('_', scrp[rand].Length);
-        }
-        bool x = true;
-        foreach(string s in scrp) {
-            if(!s.Contains('_')) x = false;
-        }
-        setText(string.Join(" ", scrp));
-        return x;
     }
 }
