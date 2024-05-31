@@ -1,7 +1,7 @@
 public class Standard_Works
 {
-    public static List<string> books = new List<string>(){"BookOfMormon", "NewTestament", "DoctrineAndCovenants", "OldTestament", "PearlOfGreatPrice"};
-    public static string file = "Standard_Works/";
+    private static List<string> _books = new List<string>(){"BookOfMormon", "NewTestament", "DoctrineAndCovenants", "OldTestament", "PearlOfGreatPrice"};
+    protected static string _file = "Standard_Works/";
     public static StreamReader findBook(Scripture verse){
         StreamReader read = verse.openScripture();
         int num = 0;
