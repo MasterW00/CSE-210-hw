@@ -3,13 +3,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Scripture first = new Scripture("BookOfMormon", "2 Nephi", 100, 33);
+        Scripture first = new Scripture("NewTestament", "2 Peter", 2, 12);
         Standard_Works.findVerse(first);
         bool x = true;
         first.printScripture();
         string[] scripture = first.getText().Split(' ');
         while(x){
-            scripture = hideWords(scripture, 10);
+            scripture = hideWords(scripture, 5);
         x = false;
         foreach(string s in scripture) {
             if(!s.Contains('_')) x = true;
