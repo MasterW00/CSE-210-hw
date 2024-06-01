@@ -5,11 +5,13 @@ public class Standard_Works
     public static StreamReader findBook(Scripture verse){
         StreamReader read = verse.openScripture();
         int num = 0;
+        string book = MakeBookTitleCase(verse.getBook());
+        verse.setBook(book);
         while(true){
             num++;
             string line = read.ReadLine();
             if(line == null) return null;
-            if(line.Contains('$') && line.Contains(verse.getBook())){
+            if(line.Contains('$') && line.Contains(book)){
                 verse.setBookLine(num);
                 return read;
             }
@@ -58,5 +60,10 @@ public class Standard_Works
         verse.setText(line);
         Console.WriteLine($"{x}");
         return read;
+    }
+    static string MakeBookTitleCase(string book){
+        string a = book.ToLower();
+        a = book.Substring(0, 1).ToUpper() + book.Substring(1);
+        return a;
     }
 }
