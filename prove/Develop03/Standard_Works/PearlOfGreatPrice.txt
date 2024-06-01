@@ -570,6 +570,7 @@ $Matthew
 Joseph Smith-History
 Extracts from the History of Joseph Smith, the Prophet
 $JSH
+%1
 1	Owing to the many reports which have been put in circulation by evil-disposed and designing persons, in relation to the rise and progress of The Church of Jesus Christ of Latter-day Saints, all of which have been designed by the authors thereof to militate against its character as a Church and its progress in the world-I have been induced to write this history, to disabuse the public mind, and put all inquirers after truth in possession of the facts, as they have transpired, in relation both to myself and the Church, so far as I have such facts in my possession.
 2	In this history I shall present the various events in relation to this Church, in truth and righteousness, as they have transpired, or as they at present exist, being now [1838] the eighth year since the organization of the said Church.
 3	I was born in the year of our Lord one thousand eight hundred and five, on the twenty-third day of December, in the town of Sharon, Windsor county, State of Vermont. ...  My father, Joseph Smith, Sen., left the State of Vermont, and moved to Palmyra, Ontario (now Wayne) county, in the State of New York, when I was in my tenth year, or thereabouts. In about four years after my father's arrival in Palmyra, he moved with his family into Manchester in the same county of Ontario-
