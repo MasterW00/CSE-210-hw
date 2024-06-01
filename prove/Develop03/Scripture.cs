@@ -64,6 +64,9 @@ public class Scripture:Standard_Works{
     public string getText(){
         return _text;
     }
+    public string setBook(string book){
+        return _book = book;
+    }
     public void setBookLine(int book_line){
         this._book_line = book_line;
     }
