@@ -1,0 +1,30 @@
+@startuml test
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Skill <|-- Enemy
+Goal <|-- Skill
+Goal <|-- Objective
+Objective <|-- Habbit
+Goal : _description : string
+Goal : Acheivment() : void, abstract
+
+
+Enemy : _name : string
+Enemy : LevelUp() : void
+Enemy : Acheivment() : void
+
+Habbit : _goal : int
+Habbit : CheckItem() : void
+Habbit : Acheivment() : void
+
+Objective : Acheivment() : void
+
+Skill : _objectives : Objective
+Skill : _enemy : Enemy
+Skill : _level : int
+Skill : _xp : int
+Skill : LeveUp() : void
+Skill : Acheivment() : void
+Skill : Objective() : void
+
+@enduml

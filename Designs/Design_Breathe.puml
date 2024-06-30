@@ -1,0 +1,30 @@
+@startuml test
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Activity <|-- Breathe
+Activity <|-- Listen 
+Activity <|-- Reflect
+Activity : _startMessage : string
+Activity : _endMessage : string
+Activity : PromptStart() : int
+Activity : PromptEnd() : void
+Activity : _delay : int
+Activity : _duration : int
+Activity : _description : string
+Activity : Display() : void
+
+UserMenu : Reflect() : void
+UserMenu : Listen() : void
+UserMenu : Breathe() : void
+
+Breathe : Start() : void
+
+Reflect : List<string> _prompts
+Reflect : List<string> _followUp
+Reflect : ChooseRandomPrompt() : string
+Reflect : Start() : void
+
+Listen : List<string> _prompts
+Listen : ChooseRandomPrompt() : string
+Listen : Start() : void
+
+@enduml
