@@ -4,7 +4,7 @@ class Tax
     protected List<Form> _w2 = new List<Form>();
     protected List<Form> _capitol = new List<Form>();
     protected List<Form> _1099 = new List<Form>();
-    protected List<float> dividends = new List<float>();
+    protected List<float> _dividends = new List<float>();
     protected float other_income;
     public struct Form{
         public string type{get; set; }

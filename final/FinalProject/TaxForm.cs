@@ -56,7 +56,7 @@ class TaxForm:Tax
         if(_ifdividend > 0){
             for(int x = 1; x <= _ifdividend; x++){
                 UserIn.Prompt($"What is dividend {x} income", out float put);
-                dividends.Add(put);
+                _dividends.Add(put);
             }
         }
     }
@@ -71,5 +71,20 @@ class TaxForm:Tax
         Collect_Other();
     }
     override public void Display(){
+        foreach(Form x in _w2){
+            Console.WriteLine($"{x}");
+        }
+        foreach(Form x in _1099){
+            Console.WriteLine($"{x}");
+        }
+        foreach(Form x in _capitol){
+            Console.WriteLine($"{x}");
+        }
+        Console.WriteLine($"Dividens");
+        foreach(float x in _dividends){
+            Console.Write($"{x}, ");
+        }
+        Console.WriteLine();
+        Console.WriteLine($"{other_income}");
     }
 }
