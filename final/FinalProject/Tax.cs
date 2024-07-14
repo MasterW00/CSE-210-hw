@@ -19,4 +19,7 @@ class Tax
 
     }
     public abstract void Display();
+    protected void Display_Form(Form form){
+        Console.WriteLine($"{form.income}, {form.cut}, {form.loss}");
+    }
 }

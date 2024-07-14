@@ -71,16 +71,20 @@ class TaxForm:Tax
         Collect_Other();
     }
     override public void Display(){
+        Console.Clear();
+        Console.WriteLine($"W2 Forms");
         foreach(Form x in _w2){
-            Console.WriteLine($"{x}");
+            Display_Form(x);
         }
+        Console.WriteLine($"1099 Forms");
         foreach(Form x in _1099){
-            Console.WriteLine($"{x}");
+            Display_Form(x);
         }
+        Console.WriteLine($"Capitol Gains");
         foreach(Form x in _capitol){
-            Console.WriteLine($"{x}");
+            Display_Form(x);
         }
-        Console.WriteLine($"Dividens");
+        Console.Write($"Dividens: ");
         foreach(float x in _dividends){
             Console.Write($"{x}, ");
         }
