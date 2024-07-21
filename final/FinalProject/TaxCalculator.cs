@@ -92,7 +92,7 @@ class TaxCalculator:TaxForm
     }
     (int, float) Get_TaxBracket(float income){
         foreach((int,float) bracket in brackets){
-            if(_agi < bracket.Item1){
+            if(income < bracket.Item1){
                 return bracket;
             }
         }
