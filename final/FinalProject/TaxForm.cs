@@ -84,6 +84,7 @@ class TaxForm:Tax
         Collect_Capitol();
         Collect_Dividends();
         Collect_Other_Income();
+        Collect_Capitol();
     }
     override public void Display(){
         Console.Clear();

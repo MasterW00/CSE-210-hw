@@ -4,7 +4,7 @@ class Tax
     protected List<Form> _capitol = new List<Form>(), _1099 = new List<Form>(), _w2 = new List<Form>();
     protected List<float> _dividends = new List<float>(), _other_income = new List<float>(), _credits = new List<float>();
     protected float _1099Tax;
-    protected int _age, _statusStandard;
+    protected int _age;
     protected bool married, joint, head;
     //Following ammounts change year to year 
     //mfj = married file joint, ss = next surviving spouse, mfs = married file seperate, head = head of household
