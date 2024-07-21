@@ -70,7 +70,7 @@ class TaxForm:Tax
         UserIn.Prompt("How many other incomes have you gotten", out int _ifother, true);
         if(_ifother > 0){
             for(int x = 1; x <= _ifother; x++){
-                UserIn.Prompt($"What is dividend {x} income", out float put);
+                UserIn.Prompt($"How much is {x} income", out float put);
                 _other_income.Add(put);
             }
         }
