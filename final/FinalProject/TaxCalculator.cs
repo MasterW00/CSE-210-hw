@@ -14,7 +14,7 @@ class TaxCalculator:TaxForm
     float Collect_Tax_Break_Info(){
         float deductions = 0;
         Console.Clear();
-        Console.WriteLine("REMINDER: FOCUS on bolded words, you can enter nothing for $0");
+        Console.WriteLine("REMINDER: FOCUS on bolded words, you can enter nothing to mean $0");
         Console.WriteLine($"THIS YEAR: ");
         UserIn.Prompt("How much have you paid in Student Loan INTREST", out float x);
         if (x > _student_intrest_deduct){
@@ -151,7 +151,8 @@ class TaxCalculator:TaxForm
         _taxAdjusted = _taxGross - _creditTotal;
     }
     override public void Display(){
-        Console.WriteLine($"Gross income: %{_grossIncome}\nDeductions: -${_deductions}\nAdjusted: ${_agi}\nBracket:{_bracket.Item2*100}%\nGross Tax: {_taxGross}\nAdjusted Tax:{_taxAdjusted}");
+        Console.Clear();
+        Console.WriteLine($"Gross income: ${_grossIncome}\nDeductions: -${_deductions}\nAdjusted: ${_agi}\nBracket: {_bracket.Item2*100}%\nGross Tax: {_taxGross}\nAdjusted Tax: {_taxAdjusted}");
     }
 
 }
