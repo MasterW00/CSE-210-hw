@@ -1,6 +1,6 @@
 class TaxCalculator:TaxForm
 {
-    float _dividensGross, _otherGross, _capitolGross, _w2Gross, _1099Gross, _1099Expence, _capitolLoss = 0;
+    float _dividensGross, _otherGross, _capitolGross, _w2Gross, _1099Gross, _1099Expence, _capitolLoss, _creditTotal = 0;
     float _grossIncome, _deductions, _1099Adjusted, _agi;
     float _taxGross, _taxAdjusted;
     (int, float) _bracket;
@@ -8,7 +8,8 @@ class TaxCalculator:TaxForm
         Gross_Income();
         Taxes_1099();
         CompareDeductions();
-
+        Total_Credit();
+        Adjust_Tax();
     }
     float Collect_Tax_Break_Info(){
         float deductions = 0;
@@ -140,6 +141,14 @@ class TaxCalculator:TaxForm
         Gross_W2();
         Gross_Other();
         _grossIncome = _1099Adjusted + _w2Gross + _otherGross + _capitolGross + _dividensGross;
+    }
+    void Total_Credit(){
+        foreach(float duct in _credits){
+            _creditTotal += duct;
+        }
+    }
+    void Adjust_Tax(){
+        _taxAdjusted = _taxGross - _creditTotal;
     }
     override public void Display(){
         Console.WriteLine($"Gross income: %{_grossIncome}\nDeductions: -${_deductions}\nAdjusted: ${_agi}\nBracket:{_bracket.Item2*100}%\nGross Tax: {_taxGross}\nAdjusted Tax:{_taxAdjusted}");

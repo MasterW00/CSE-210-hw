@@ -2,7 +2,7 @@ class Program
 {
     static void Main(string[] args)
     {   
-        TaxForm tax = new TaxForm();
+        TaxCalculator tax = new TaxCalculator();
         tax.Display();
     }
 }
