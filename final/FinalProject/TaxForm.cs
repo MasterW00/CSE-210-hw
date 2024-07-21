@@ -23,10 +23,8 @@ class TaxForm:Tax
         if(_ifw2 > 0){
             for(int x = 0; x < _ifw2; x++){
                 Form w2 = NewForm();
-                UserIn.Prompt($"What is W2 {x + 1} gross income", out float put);
+                UserIn.Prompt($"enter is W2 {x + 1} gross income", out float put);
                 w2.income = put;
-                UserIn.Prompt($"What is W2 {x + 1} cuts <enter to Continue>", out put);
-                UserIn.PopulateList<float>("$", w2.cut, UserIn.ParseFloat);
                 _w2.Add(w2);
             }
         }
