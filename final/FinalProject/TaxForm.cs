@@ -39,7 +39,7 @@ class TaxForm:Tax
                 UserIn.Prompt($"What is 1099 {x + 1} loss", out put);
                 form.loss = put;
                 UserIn.Prompt($"Enter 1099 {x + 1} expences <enter nothing to continue>", out put);
-                UserIn.PopulateList<float>("$", form.cut, UserIn.ParseFloat);
+                UserIn.PopulateList<float>("+", form.cut, UserIn.ParseFloat);
                 _1099.Add(form);
             }
         }
@@ -76,7 +76,7 @@ class TaxForm:Tax
         }
     }
     void Collect_Credits(){
-        UserIn.PopulateList<float>("",_credits,UserIn.ParseFloat);
+        UserIn.PopulateList<float>("+",_credits,UserIn.ParseFloat);
     }
     void Collect_all_Forms(){
         Collect_W2();
