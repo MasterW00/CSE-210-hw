@@ -76,6 +76,7 @@ class TaxForm:Tax
         }
     }
     void Collect_Credits(){
+        Console.WriteLine($"Enter Any Tax Credits");
         UserIn.PopulateList<float>("+",_credits,UserIn.ParseFloat);
     }
     void Collect_all_Forms(){
